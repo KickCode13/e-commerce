@@ -1,0 +1,44 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "\"A modern e-commerce with a wide selection of products, easy navigation, and a secure shopping experience",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KickCode13/e-ecommerce.git"
+  },
+  "keywords": [
+    "E-commerce",
+    "Online",
+    "shopping",
+    "Secure",
+    "shopping",
+    "Online",
+    "store",
+    "Competitive",
+    "prices"
+  ],
+  "author": "Antônio Magno <antoniomagnotrabalho@gmail.com> (https://github.com/KickCode13)",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/KickCode13/e-ecommerce/issues"
+  },
+  "homepage": "https://github.com/KickCode13/e-ecommerce#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.1",
+    "stripe": "^17.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
