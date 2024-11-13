@@ -1,0 +1,14 @@
+body{
+    background-color: #FA62E1;
+    font-family: 'Playfair Display', serif;
+}
+
+.navbar{
+    background-color: #A800FA !important;
+    
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.footer{
+    background-color: #A800FA !important;
+}
