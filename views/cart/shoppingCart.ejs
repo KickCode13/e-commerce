@@ -1,0 +1,87 @@
+<%- include('../partials/header.ejs') %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Minha Loja</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Carrinho</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contato</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Carrinho -->
+<div class="container mt-5">
+    <h2 class="mb-4">Carrinho de Compras</h2>
+    <div class="row">
+        <!-- Lista de produtos -->
+        <div class="col-lg-8">
+            <div class="list-group">
+                <!-- Produto 1 -->
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img src="https://via.placeholder.com/100x100" alt="Produto 1" class="img-thumbnail me-3">
+                        <div>
+                            <h5 class="mb-1">Produto 1</h5>
+                            <p class="mb-1">Descrição breve do produto.</p>
+                            <p class="mb-0"><strong>R$100,00</strong></p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <label for="quantidade1" class="form-label mb-1">Quantidade</label>
+                        <input type="number" id="quantidade1" class="form-control" value="1" min="1" style="width: 80px;">
+                        <button class="btn btn-danger btn-sm mt-2">Remover</button>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img src="https://via.placeholder.com/100x100" alt="Produto 2" class="img-thumbnail me-3">
+                        <div>
+                            <h5 class="mb-1">Produto 2</h5>
+                            <p class="mb-1">Descrição breve do produto.</p>
+                            <p class="mb-0"><strong>R$150,00</strong></p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <label for="quantidade2" class="form-label mb-1">Quantidade</label>
+                        <input type="number" id="quantidade2" class="form-control" value="1" min="1" style="width: 80px;">
+                        <button class="btn btn-danger btn-sm mt-2">Remover</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resumo do pedido -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    Resumo do Pedido
+                </div>
+                <div class="card-body">
+                    <p class="mb-2">Subtotal: <strong>R$250,00</strong></p>
+                    <p class="mb-2">Frete: <strong>R$20,00</strong></p>
+                    <p class="mb-2">Total: <strong>R$270,00</strong></p>
+                    <button class="btn btn-primary btn-lg w-100">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>
