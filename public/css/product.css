@@ -10,3 +10,90 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.row {
+    padding: 10px 20px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+table{
+    box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.8);
+}
+.table-rounded{
+    border-radius: 10px; /* Define o arredondamento da tabela */
+    overflow: hidden; 
+}
+button:hover{
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.comment-section {
+    width: 90%; /* Usando 90% da largura da tela */
+    max-width: 800px; /* Limite máximo de largura */
+    margin: 5% auto ; /* Margem superior e inferior de 5%, centralizado */
+    background-color: #fff;
+    padding: 5%; /* Padding de 5% para adaptação responsiva */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Estilizando a seção de comentários */
+.comment-form input,
+.comment-form textarea {
+    width: 100%; /* Ocupa 100% do espaço disponível */
+    padding: 3%; /* Padding de 3% */
+    margin: 3% 0; /* Margem superior e inferior de 3% */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem; /* Usando rem para fontes mais adaptáveis */
+}
+
+.comment-form button {
+    padding: 2% 4%; /* Padding proporcional */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.comment-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para a avaliação por estrelas */
+.star-rating {
+    font-size: 2rem; /* Aumenta o tamanho da estrela usando rem */
+}
+
+.star-rating .bi {
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star-rating .bi-star-fill {
+    color: #ffc107; /* Cor das estrelas preenchidas */
+}
+
+.comment {
+    padding: 5%; /* Padding de 5% para a seção de cada comentário */
+    margin-bottom: 5%; /* Margem inferior de 5% */
+    background-color: #f9f9f9;
+    border-left: 4px solid #007bff;
+    border-radius: 5px;
+}
+
+.comment .author {
+    font-weight: bold;
+    margin-bottom: 3%; /* Margem inferior de 3% para o autor */
+}
+
+/* Comentários já postados */
+.posted-comments {
+    margin-top: 5%; /* Margin superior de 5% */
+}
+
+.posted-comments .comment {
+    margin-bottom: 5%; /* Margin inferior de 5% para cada comentário */
+}
