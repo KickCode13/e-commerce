@@ -27,6 +27,7 @@ button:hover{
     transition: transform 0.2s ease;
 }
 
+/*g */
 .comment-section {
     width: 90%; /* Usando 90% da largura da tela */
     max-width: 800px; /* Limite máximo de largura */
