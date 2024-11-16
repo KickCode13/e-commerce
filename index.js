@@ -16,8 +16,11 @@ app.set('views', __dirname + '/views');
 console.log(__dirname);
 app.set("view engine", "ejs");
 
+import routerProduct from './routes/product/product_Routes.js'
+
+app.use('/product', routerProduct)
 app.get('/', (req, res)=>{
-    res.render('product/products-page')
+    res.render('home/index')
 });
 
 app.listen(process.env.PORT,()=>{
