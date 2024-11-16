@@ -16,9 +16,14 @@ app.set('views', __dirname + '/views');
 console.log(__dirname);
 app.set("view engine", "ejs");
 
-import routerProduct from './routes/product/product_Routes.js'
+import routerProduct from './routes/product/product_Routes.js';
+import routerContactInfo from "./routes/contact-info/contact_Routes.js";
+import routerCart from "./routes/cart/cart_Routes.js";
 
-app.use('/product', routerProduct)
+app.use('/product', routerProduct);
+app.use('/contact', routerContactInfo);
+app.use('/cart', routerCart);
+
 app.get('/', (req, res)=>{
     res.render('home/index')
 });

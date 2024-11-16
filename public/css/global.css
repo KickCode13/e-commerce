@@ -12,3 +12,30 @@ body{
 .footer{
     background-color: #A800FA !important;
 }
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000; /* cor do texto */
+    
+    letter-spacing: 2px; /* aumentar o espaçamento das letras */
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar-brand:hover {
+    color:  #FA62E1; /* cor ao passar o mouse */
+    transform: scale(1.1); /* aumento suave no tamanho */
+  }
+  /* Estilo básico do nav item */
+.nav-item {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff; /* Cor padrão */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave para cor e transformação */
+  }
+  
+  /* Efeito ao passar o mouse (hover) */
+  .nav-item:hover {
+    color: #ff5733; /* Cor ao passar o mouse */
+    transform: scale(1.1); /* Aumenta o tamanho suavemente */
+  }  
