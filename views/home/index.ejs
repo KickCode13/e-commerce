@@ -1,24 +1,24 @@
 <%- include('../partials/header.ejs') %>
  <!-- Banner (ajuste para substituir jumbotron) -->
- <div class="text-black text-center py-5">
+ <div class="text-black text-center py-5 text-page-home">
     <h1 class="display-4">Bem-vindo à Nossa Loja!</h1>
     <p class="lead">Os melhores produtos para você.</p>
-    <a href="#" class="btn btn-light btn-lg">Confira nossos produtos</a>
+    <a href="#" class="btn btn-light btn-lg text-page-home btn-explore-products" style="background-color:#A800FA; border: 0;">Confira nossos produtos</a>
 </div>
  <!-- Barra de Pesquisa -->
- <div class="container mt-4">
+ <div class="container mt-4 text-page-home">
     <form class="d-flex justify-content-center">
         <input class="form-control me-2" type="search" placeholder="Pesquisar produtos..." aria-label="Pesquisar">
-        <button class="btn btn-primary" type="submit">Pesquisar</button>
+        <button class="btn btn-search" type="submit">Pesquisar</button>
     </form>
 </div>
 <!-- Produtos -->
 <div class="container mt-4">
-    <h2 class="text-center mb-4">Nossos Produtos</h2>
+    <h2 class="text-center mb-4 h2-text">Nossos Produtos</h2>
     <div class="row">
         <!-- Produto 1 -->
         <div class="col-md-4">
-            <div class="card">
+            <div class="card text-page-home">
                 <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto 1">
                 <div class="card-body">
                     <h5 class="card-title">Produto 1</h5>
@@ -30,7 +30,7 @@
         </div>
         <!-- Produto 2 -->
         <div class="col-md-4">
-            <div class="card">
+            <div class="card text-page-home">
                 <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto 2">
                 <div class="card-body">
                     <h5 class="card-title">Produto 2</h5>
@@ -42,7 +42,7 @@
         </div>
         <!-- Produto 3 -->
         <div class="col-md-4">
-            <div class="card">
+            <div class="card text-page-home">
                 <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto 3">
                 <div class="card-body">
                     <h5 class="card-title">Produto 3</h5>

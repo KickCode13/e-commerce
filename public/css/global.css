@@ -1,6 +1,6 @@
 body{
-    background-color: #FA62E1;
-    font-family: 'Playfair Display', serif;
+    background-color: #332D32;
+   
 }
 
 .navbar{
@@ -11,6 +11,7 @@ body{
 }
 .footer{
     background-color: #A800FA !important;
+    color:#52F213
 }
 
 .navbar-brand {
@@ -39,3 +40,46 @@ body{
     color: #ff5733; /* Cor ao passar o mouse */
     transform: scale(1.1); /* Aumenta o tamanho suavemente */
   }  
+
+  .lilita-one-regular {
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .text-page-home{
+    color: #52F213 !important;
+  }
+
+  .text-navbar{
+    color: #52F213;
+  }
+  .btn-explore-products:hover{
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+  }
+  .h2-text{
+    color: #52F213;
+  }
+  .btn-search{
+    background-color: #52F213 !important;
+  }
+
+  .text-page-details{
+    color: #52F213;
+  }
+  .text-page-details th{
+    color: #52F213;
+    background-color:#332D32;
+  }
+  .text-page-details td{
+    color: #52F213;
+    background-color: #332D32;
+  }
+  
+  .text-category-page-details{
+    color:#F2C713
+  }
+  strong {
+    font-weight: normal;
+  }
+  
