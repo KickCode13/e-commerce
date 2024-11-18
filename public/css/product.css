@@ -32,10 +32,11 @@ button:hover{
     width: 90%; /* Usando 90% da largura da tela */
     max-width: 800px; /* Limite máximo de largura */
     margin: 5% auto ; /* Margem superior e inferior de 5%, centralizado */
-    background-color: #fff;
+    background-color: #68656C;
     padding: 5%; /* Padding de 5% para adaptação responsiva */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    color: #A7CECB;
 }
 
 /* Estilizando a seção de comentários */
@@ -80,8 +81,8 @@ button:hover{
 .comment {
     padding: 5%; /* Padding de 5% para a seção de cada comentário */
     margin-bottom: 5%; /* Margem inferior de 5% */
-    background-color: #f9f9f9;
-    border-left: 4px solid #007bff;
+    background-color: #52414C;
+    border-left: 4px solid #9DBDBC;
     border-radius: 5px;
 }
 

@@ -1,85 +1,88 @@
-body{
-    background-color: #332D32;
-   
+body {
+  background-color: #52414c;
 }
 
-.navbar{
-    background-color: #A800FA !important;
-    
-    padding: 10px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.navbar {
+  background-color: #a800fa !important;
+
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.footer{
-    background-color: #A800FA !important;
-    color:#52F213
+.footer {
+  background-color: #a800fa !important;
+  color: #a7cecb;
 }
 
 .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000000; /* cor do texto */
-    
-    letter-spacing: 2px; /* aumentar o espaçamento das letras */
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .navbar-brand:hover {
-    color:  #FA62E1; /* cor ao passar o mouse */
-    transform: scale(1.1); /* aumento suave no tamanho */
-  }
-  /* Estilo básico do nav item */
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000; /* cor do texto */
+
+  letter-spacing: 2px; /* aumentar o espaçamento das letras */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #fa62e1; /* cor ao passar o mouse */
+  transform: scale(1.1); /* aumento suave no tamanho */
+}
+/* Estilo básico do nav item */
 .nav-item {
-    font-size: 18px;
-    font-weight: bold;
-    color: #007bff; /* Cor padrão */
-    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave para cor e transformação */
-  }
-  
-  /* Efeito ao passar o mouse (hover) */
-  .nav-item:hover {
-    color: #ff5733; /* Cor ao passar o mouse */
-    transform: scale(1.1); /* Aumenta o tamanho suavemente */
-  }  
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff; /* Cor padrão */
+  transition: color 0.3s ease, transform 0.3s ease; /* Transição suave para cor e transformação */
+}
 
-  .lilita-one-regular {
-    font-family: "Lilita One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  .text-page-home{
-    color: #52F213 !important;
-  }
+/* Efeito ao passar o mouse (hover) */
+.nav-item:hover {
+  color: #ff5733; /* Cor ao passar o mouse */
+  transform: scale(1.1); /* Aumenta o tamanho suavemente */
+}
 
-  .text-navbar{
-    color: #52F213;
-  }
-  .btn-explore-products:hover{
-    transform: scale(1.05);
-    transition: transform 0.2s ease;
-  }
-  .h2-text{
-    color: #52F213;
-  }
-  .btn-search{
-    background-color: #52F213 !important;
-  }
+.lilita-one-regular {
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.text-page-home {
+  color: #a7cecb !important;
+}
 
-  .text-page-details{
-    color: #52F213;
-  }
-  .text-page-details th{
-    color: #52F213;
-    background-color:#332D32;
-  }
-  .text-page-details td{
-    color: #52F213;
-    background-color: #332D32;
-  }
-  
-  .text-category-page-details{
-    color:#F2C713
-  }
-  strong {
-    font-weight: normal;
-  }
-  
+.text-navbar {
+  color: #a7cecb;
+}
+.btn-explore-products {
+  background-color: #9eb3ad !important;
+  color: #332d32 !important;
+  border: 0px;
+}
+.btn-explore-products:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+.h2-text {
+  color: #a7cecb;
+}
+.btn-search {
+  background-color: #52f213 !important;
+}
+
+.text-page-details {
+  color: #a7cecb;
+}
+.text-page-details th {
+  color: #a7cecb;
+  background-color: #332d32;
+}
+.text-page-details td {
+  color: #a7cecb;
+  background-color: #332d32;
+}
+
+.text-category-page-details {
+  color: #7d888c;
+}
+strong {
+  font-weight: normal;
+}
