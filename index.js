@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import connectDB from "./db/dbConnection.js";
 connectDB();
+import productSchema from "./models/Product_Model.js";
 dotenv.config();
 
 
