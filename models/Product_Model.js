@@ -11,6 +11,11 @@ const productSchema = mongoose.model(
       type: String,
       required: true,
     },
+    quantity: {
+      type: Number,
+      required: true, // Quantidade obrigatória
+      min: 0, // Não permite quantidade negativa
+    },
     description: {
       type: String,
       required: true,
