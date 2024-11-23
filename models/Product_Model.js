@@ -20,6 +20,10 @@ const productSchema = mongoose.model(
       type: String,
       required: true,
     },
+    image_url:{
+      type: String,
+      required:true
+    },
     purchased: {
       type: Boolean,
       default: false,
