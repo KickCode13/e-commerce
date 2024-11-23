@@ -23,6 +23,7 @@ app.set('views', __dirname + '/views');
 // Configura o caminho das views
 console.log(__dirname);
 app.set("view engine", "ejs");
+import ProductController from "./controllers/productController.js";
 
 import routerProduct from './routes/product/product_Routes.js';
 import routerContactInfo from "./routes/contact-info/contact_Routes.js";
@@ -33,7 +34,7 @@ app.use('/contact', routerContactInfo);
 app.use('/cart', routerCart);
 
 app.get('/', (req, res)=>{
-    res.render('product/product-add')
+    ProductController.getAllProducts(req, res);
 });
 
 app.listen(process.env.PORT,()=>{
