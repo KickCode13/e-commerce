@@ -3,20 +3,21 @@ import Product_Model from "../models/Product_Model.js";
 class ProductController {
   static async addProduct(req, res) {
     try {
-      const { name, price, quantity, description } = req.body;
+      const { name, price, quantity, description, image_url } = req.body;
       
-      console.log(name, price, quantity, description);
+      console.log(name, price, quantity, description, image_url);
       const newProduct = new Product_Model({
         name,
         price,
         quantity,
         description,
+        image_url,
       });
       await newProduct
         .save()
         .then((product) => {
           if (product) {
-            console.log(product);
+            console.log(product._id.toHexString());
             res.status(200).json({ message:"Adição de produto concluida"})
           }
         })
@@ -32,13 +33,22 @@ class ProductController {
     try {
         await Product_Model.find().
         then((products)=>{
-            res.render('home/index', {products});
+            res.render('adm/index', {products});
         });
     } catch (err) {
         
     }
   }
 
+  static async removeProduct(req, res){
+    const id = req.params.id;
+    console.log(id);
+    try {
+      await Product_Model.findByIdAndDelete(id);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
 }
 
