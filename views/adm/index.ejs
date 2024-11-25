@@ -1,0 +1,49 @@
+<%- include('../partials/header.ejs') %>
+<!-- Banner (ajuste para substituir jumbotron) -->
+<div class="text-black text-center py-5 text-page-home">
+    <h1 class="display-4">Bem-vindo à Área Administrativa!</h1>
+    <p class="lead">Gerencie os produtos da loja com facilidade.</p>
+    <a href="/product/add-product" class="btn btn-light btn-lg btn-explore-products">Adicionar Novo Produto</a>
+</div>
+
+<!-- Barra de Pesquisa -->
+<div class="container mt-4 text-page-home">
+    <form class="d-flex justify-content-center">
+        <input class="form-control me-2" type="search" placeholder="Pesquisar produtos..." aria-label="Pesquisar">
+        <button class="btn btn-search" type="submit">Pesquisar</button>
+    </form>
+</div>
+
+<!-- Produtos -->
+<div class="container mt-4">
+    <h2 class="text-center mb-4 h2-text">Gerencie os Produtos</h2>
+    <div class="row">
+        <% products.forEach(product => { %>
+        <!-- Produto -->
+        <div class="col-md-4">
+            <div class="card text-page-home">
+                <img src="<%= product.image_url %>" class="card-img-top" alt="<%= product.name %>">
+                <div class="card-body">
+                    <h5 class="card-title"><%= product.name %></h5>
+                    <p class="card-text"><%= product.description %></p>
+                    <p class="card-text"><strong>R$ <%= product.price %></strong></p>
+
+                    <!-- Botões do CRUD -->
+                    <div class="d-flex justify-content-between mt-3">
+                        <a href="/admin/edit-product/<%= product._id.toHexString() %>" class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+                        <a href="/product/delete-product/<%= product._id.toHexString() %>" class="btn btn-warning btn-sm">
+                           Del
+                        </a>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>
