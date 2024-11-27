@@ -33,7 +33,7 @@
                         <a href="/admin/edit-product/<%= product._id.toHexString() %>" class="btn btn-warning btn-sm">
                             Editar
                         </a>
-                        <a href="/product/delete-product/<%= product._id.toHexString() %>" class="btn btn-warning btn-sm">
+                        <a href="/product/delete-product/<%= product._id.toHexString() %>" class="btn btn-warning btn-sm btn-del">
                            Del
                         </a>
                         
@@ -45,5 +45,5 @@
         <% }) %>
     </div>
 </div>
-
+<script src="/js/fetchRemove.js"></script>
 <%- include('../partials/footer.ejs') %>
