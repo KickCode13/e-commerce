@@ -44,7 +44,15 @@ class ProductController {
     const id = req.params.id;
     console.log(id);
     try {
-      await Product_Model.findByIdAndDelete(id);
+      await Product_Model.findByIdAndDelete(id).
+      then(deletedProduct =>{
+        if(!deletedProduct){
+          res.status(404).json({message:"Produto não encontrado"})
+        }
+        else{
+          res.status(200).json({message:"Produto excluido com sucesso"});
+        }
+      });
     } catch (err) {
       console.log(err);
     }
