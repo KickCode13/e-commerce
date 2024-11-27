@@ -18,7 +18,7 @@ routerProduct.post('/add-product', (req, res) =>{
     ProductController.addProduct(req, res);
 });
 
-routerProduct.get('/delete-product/:id', (req, res) =>{
+routerProduct.delete('/delete-product/:id', (req, res) =>{
     console.log('oi')
     console.log(req.params.id)
     ProductController.removeProduct(req, res);
