@@ -7,6 +7,21 @@ const productSchema = mongoose.model(
       type: String,
       required: true,
     },
+    category:{
+      type:String,
+      default:"Meias"
+    },
+    sizeOption:{
+      type:String,
+      default:"P"
+    },
+    colorOption:{
+      type:String,
+      default:"Cor"
+    },productFeatures:{
+      type:String,
+      default:"Kick"
+    },
     price: {
       type: String,
       required: true,
