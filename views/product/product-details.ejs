@@ -2,18 +2,18 @@
     <div class="container mt-5 text-page-details">
         <div class="row">
             <div class="col-md-6">
-                <img src="https://files.tecnoblog.net/wp-content/uploads/2024/07/wa_translation_message_feature_spanish_english_langauge_android-1060x597.webp" alt="Product Image" class="img-fluid rounded">
+                <img src="<%= product.image_url %>" alt="Product Image" class="img-fluid rounded">
             </div>
             <div class="col-md-6">
-                <h1 class="display-5 mb-3">Product Name</h1>
-                <p class="text-category-page-details">Category: <strong>Category Name</strong></p>
+                <h1 class="display-5 mb-3"><%= product.name %></h1>
+                <p class="text-category-page-details">Category: <strong><%= product.category %></strong></p>
                 <h2 class="text-success mb-4">$99.99</h2>
                 <p>
-                    This is a brief description of the product, highlighting its main features, uses, and benefits. Add more details to engage customers and inform their purchasing decision.
+                    <%= product.description %>
                 </p>
                 <form>
                     <div class="mb-3">
-                        <label for="quantity" class="form-label">Quantity</label>
+                        <label for="quantity" class="form-label"><%= product.quantity %></label>
                         <input type="number" id="quantity" name="quantity" class="form-control w-25" min="1" value="1">
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg">Buy</button>
@@ -28,16 +28,16 @@
             <table class="table table-bordered table-rounded ">
                 <tbody class="text-page-details">
                     <tr>
-                        <th scope="row">Tela</th>
-                        <td>Display AMOLED de 6.7 polegadas com resolução Full HD+, proporcionando cores vibrantes e maior imersão para vídeos e jogos.</td>
+                        <th scope="row">Tamanho</th>
+                        <td><%= product.sizeOption %></td>
                     </tr>
                     <tr>
-                        <th scope="row">Processador</th>
-                        <td>Equipado com o processador Octa-core de última geração, garantindo desempenho rápido e suave, ideal para multitarefas e jogos intensos.</td>
+                        <th scope="row">Cor</th>
+                        <td><%= product.colorOption %></td>
                     </tr>
                     <tr>
-                        <th scope="row"> Bateria</th>
-                        <td>Bateria de 5.000 mAh com carregamento rápido, proporcionando até dois dias de uso moderado com uma única carga.</td>
+                        <th scope="row"> Caracteristicas</th>
+                        <td><%= product.productFeatures %></td>
                     </tr>
                 </tbody>
             </table>
