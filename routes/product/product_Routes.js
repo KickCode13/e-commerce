@@ -7,8 +7,8 @@ routerProduct.get('/products-page', (req, res) =>{
     res.render('product/products-page');
 });
 
-routerProduct.get('/product-details', (req, res) =>{
-    res.render('product/product-details');
+routerProduct.get('/product-details/:id', (req, res) =>{
+    ProductController.getProduct(req, res);
 });
 
 routerProduct.get('/add-product', (req, res) =>{
