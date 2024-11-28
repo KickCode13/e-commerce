@@ -86,3 +86,21 @@ body {
 strong {
   font-weight: normal;
 }
+.text-page-home .card-img-top{
+  height: 300px; /* Define a altura da imagem */
+  object-fit: cover;
+}
+.card{
+  height: 600px; /* Define a altura da imagem */
+  object-fit: cover;
+  margin-top: 10%;
+}
+.card-text {
+  display: -webkit-box; /* Necessário para truncamento multiline */
+  -webkit-box-orient: vertical; /* Define orientação da caixa */
+  overflow: hidden; /* Esconde o texto que ultrapassa */
+  text-overflow: ellipsis; /* Adiciona "..." ao final */
+  white-space: normal; /* Permite quebra de linha */
+  -webkit-line-clamp: 3; /* Limita o número de linhas visíveis */
+}
+
