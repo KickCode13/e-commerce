@@ -33,7 +33,7 @@ class ProductController {
     try {
         await Product_Model.find().
         then((products)=>{
-            res.render('adm/index', {products});
+            res.render('home/index', {products});
         });
     } catch (err) {
         
