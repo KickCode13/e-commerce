@@ -58,6 +58,16 @@ class ProductController {
     }
   }
 
+  static async getProduct(req,res){
+    const id = req.params.id;
+    try {
+      const product = await Product_Model.findById(id);
+      res.render('product/product-details', {product});
+    } catch (err) {
+      
+    }
+  }
+
 }
 
 export default ProductController;
