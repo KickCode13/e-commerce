@@ -1,6 +1,7 @@
 import express from "express";
 import ProductController from "../../controllers/productController.js";
 
+
 const routerProduct = express.Router();
 
 routerProduct.get('/products-page', (req, res) =>{
@@ -23,6 +24,21 @@ routerProduct.delete('/delete-product/:id', (req, res) =>{
     console.log(req.params.id)
     ProductController.removeProduct(req, res);
     
-})
+});
+
+routerProduct.get('/edit-product/:id', (req, res)=>{
+    ProductController.getEditProduct(req, res);
+
+});
+
+routerProduct.put('/edit-product/:id', (req, res)=>{
+    console.log(req.body);
+    ProductController.editProduct(req, res);
+
+});
+
+routerProduct.post("/checkout", async (req, res) => {
+   ProductController.checkoutProduct(req, res);
+});
 
 export default routerProduct;
