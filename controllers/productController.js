@@ -1,5 +1,9 @@
 import Product_Model from "../models/Product_Model.js";
 
+import Stripe from "stripe";
+
+const stripe = new Stripe(process.env.STRIPE_SECRETE_KEY);
+
 class ProductController {
   static async addProduct(req, res) {
     try {
@@ -67,7 +71,95 @@ class ProductController {
       
     }
   }
+  
+  static async getEditProduct(req, res){
+    const id = req.params.id;
+    try {
+      const product = await Product_Model.findById(id);
+      res.render('product/product-edit', {product});
+    } catch (err) {
+      
+    }
+  }
+  static async editProduct(req, res){
+    const id = req.params.id;
+    const {
+      name,
+      category,
+      sizeOption,
+      colorOption,
+      productFeatures,
+      price,
+      quantity,
+      description,
+      image_url,
+      purchased,
+      purchaseDate,
+      buyer,
+      productStatus,
+      shippingStatus,
+    } = req.body;
+    
+    try {
+      await Product_Model.findByIdAndUpdate(id, {
+        name,
+        category,
+        sizeOption,
+        colorOption,
+        productFeatures,
+        price,
+        quantity,
+        description,
+        image_url,
+        purchased,
+        purchaseDate,
+        buyer,
+        productStatus,
+        shippingStatus,
+      });
+      res.status(200).json({message:"Produto atualizado"})
+    } catch (error) {
 
+    }
+  }
+  static async checkoutProduct(req, res){
+    const {name, price, quantity} = req.body;
+    console.log("Valores recebidos no corpo da requisição:");
+    console.log("Nome:", name);
+    console.log("Preço (como string):", price);
+    console.log("Quantidade (como string):", quantity);
+
+    // Parsing
+    const parsedPrice = Math.round(parseFloat(price) * 100); // Converte preço para centavos
+    const parsedQuantity = parseInt(quantity, 10); // Converte quantidade para inteiro
+
+    // Logs após o parsing
+    console.log("Valores após parsing:");
+    console.log("Preço (em centavos):", parsedPrice);
+    console.log("Quantidade (como inteiro):", parsedQuantity);
+    const session = await stripe.checkout.sessions.create({
+      line_items: [
+        {
+          price_data: {
+            currency: "brl",
+            product_data: {
+              name: name,
+            },
+            unit_amount: parsedPrice,
+          },
+          quantity: parsedQuantity,
+        },
+        
+      ],
+      mode: "payment",
+      shipping_address_collection:{
+          allowed_countries:['US','BR']
+      },
+      success_url: `${process.env.BASE_URL}/complete?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.BASE_URL}/cancel`,
+    });
+    res.redirect(session.url);
+  }
 }
 
 export default ProductController;
