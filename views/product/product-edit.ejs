@@ -1,0 +1,112 @@
+<%- include('../partials/header.ejs') %>
+  <div class="container mt-5">
+    <h1 class="mb-4">Edit Product</h1>
+    <form class="row g-3">
+      <!-- Product Name -->
+      <div class="col-md-6">
+        <label for="name" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="<%= product.name %>" value="<%= product.name %>" required>
+      </div>
+
+      <!-- Category -->
+      <div class="col-md-6">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" id="category" name="category" placeholder="<%= product.category %>" value="<%= product.category %>">
+      </div>
+
+      <!-- Size Option -->
+      <div class="col-md-4">
+        <label for="sizeOption" class="form-label">Size</label>
+        <input type="text" class="form-control" id="sizeOption" name="sizeOption" placeholder="<%= product.sizeOption %>" value="<%= product.sizeOption %>">
+      </div>
+
+      <!-- Color Option -->
+      <div class="col-md-4">
+        <label for="colorOption" class="form-label">Color</label>
+        <input type="text" class="form-control" id="colorOption" name="colorOption" placeholder="<%= product.colorOption %>" value="<%= product.colorOption %>">
+      </div>
+
+      <!-- Product Features -->
+      <div class="col-md-4">
+        <label for="productFeatures" class="form-label">Features</label>
+        <input type="text" class="form-control" id="productFeatures" name="productFeatures" placeholder="<%= product.productFeatures %>" value="<%= product.productFeatures %>">
+      </div>
+
+      <!-- Price -->
+      <div class="col-md-6">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control" id="price" name="price" placeholder="<%= product.price %>" value="<%= product.price %>" required>
+      </div>
+
+      <!-- Quantity -->
+      <div class="col-md-6">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="quantity" name="quantity" placeholder="<%= product.quantity %>" value="<%= product.quantity %>" min="0" required>
+      </div>
+
+      <!-- Description -->
+      <div class="col-12">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="4" placeholder="<%= product.description %>"><%= product.description %></textarea>
+      </div>
+
+      <!-- Image URL -->
+      <div class="col-12">
+        <label for="image_url" class="form-label">Image URL</label>
+        <input type="text" class="form-control" id="image_url" name="image_url" placeholder="<%= product.image_url %>" value="<%= product.image_url %>" required>
+      </div>
+
+      <!-- Purchased -->
+      <div class="col-md-6">
+        <label for="purchased" class="form-label">Purchased</label>
+        <select class="form-select" id="purchased" name="purchased">
+          <option value="false" <%= product.purchased ? '' : 'selected' %>>No</option>
+          <option value="true" <%= product.purchased ? 'selected' : '' %>>Yes</option>
+        </select>
+      </div>
+
+      <!-- Purchase Date -->
+      <div class="col-md-6">
+        <label for="purchaseDate" class="form-label">Purchase Date</label>
+        <input type="date" class="form-control" id="purchaseDate" name="purchaseDate" value="<%= product.purchaseDate ? product.purchaseDate.toISOString().substring(0, 10) : '' %>">
+      </div>
+
+      <!-- Buyer Details -->
+      <div class="col-md-6">
+        <label for="buyerName" class="form-label">Buyer Name</label>
+        <input type="text" class="form-control" id="buyerName" name="buyer[name]" placeholder="<%= product.buyer.name %>" value="<%= product.buyer.name %>">
+      </div>
+      <div class="col-md-6">
+        <label for="buyerEmail" class="form-label">Buyer Email</label>
+        <input type="email" class="form-control" id="buyerEmail" name="buyer[email]" placeholder="<%= product.buyer.email %>" value="<%= product.buyer.email %>">
+      </div>
+
+      <!-- Product Status -->
+      <div class="col-md-6">
+        <label for="productStatus" class="form-label">Product Status</label>
+        <select class="form-select" id="productStatus" name="productStatus">
+          <option value="In stock" <%= product.productStatus === 'In stock' ? 'selected' : '' %>>In stock</option>
+          <option value="Out of stock" <%= product.productStatus === 'Out of stock' ? 'selected' : '' %>>Out of stock</option>
+        </select>
+      </div>
+
+      <!-- Shipping Status -->
+      <div class="col-md-6">
+        <label for="shippingStatus" class="form-label">Shipping Status</label>
+        <select class="form-select" id="shippingStatus" name="shippingStatus">
+          <option value="Pending" <%= product.shippingStatus === 'Pending' ? 'selected' : '' %>>Pending</option>
+          <option value="Shipped" <%= product.shippingStatus === 'Shipped' ? 'selected' : '' %>>Shipped</option>
+          <option value="Delivered" <%= product.shippingStatus === 'Delivered' ? 'selected' : '' %>>Delivered</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="col-12">
+        <button type="submit" class="btn btn-edit btn-primary"  data-url="/product/edit-product/<%= product._id %>">Update Product</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="/js/fetchUpdate.js"></script>
+<%- include('../partials/footer.ejs') %>
