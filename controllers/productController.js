@@ -155,10 +155,18 @@ class ProductController {
       shipping_address_collection:{
           allowed_countries:['US','BR']
       },
-      success_url: `${process.env.BASE_URL}/complete?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${process.env.BASE_URL}/product/complete?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.BASE_URL}/cancel`,
     });
     res.redirect(session.url);
+  }
+  static async success_Url(req, res){
+    const id = req.query.session_id;
+    const session = await stripe.checkout.sessions.retrieve(id, {expand:['payment_intent.payment_method']});
+    const lineItems = await stripe.checkout.sessions.listLineItems(id);
+    console.log(lineItems);
+    res.render('checkout/success', {lineItems: lineItems.data});
+
   }
 }
 

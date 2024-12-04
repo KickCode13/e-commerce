@@ -41,4 +41,9 @@ routerProduct.post("/checkout", async (req, res) => {
    ProductController.checkoutProduct(req, res);
 });
 
+routerProduct.get('/complete', (req, res)=>{
+
+   ProductController.success_Url(req, res);
+});
+
 export default routerProduct;

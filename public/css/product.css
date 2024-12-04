@@ -99,3 +99,83 @@ button:hover{
 .posted-comments .comment {
     margin-bottom: 5%; /* Margin inferior de 5% para cada comentário */
 }
+@media (max-width: 1024px) {
+    .card {
+        padding: 8px 15px; /* Reduce card padding */
+    }
+
+    .comment-section {
+        padding: 4%; /* Reduce padding */
+    }
+
+    .comment-form button {
+        padding: 2% 3%; /* Adjust button padding */
+    }
+
+    .star-rating {
+        font-size: 1.5rem; /* Decrease star size */
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 5px 10px; /* Further reduce card padding */
+    }
+
+    .comment-section {
+        width: 95%; /* Full width on small screens */
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+        padding: 2%; /* Adjust padding for small screens */
+    }
+
+    .comment {
+        padding: 4%; /* Adjust padding for comments */
+    }
+    .btn{
+        width: 100%;
+        
+    }
+}
+
+
+.card {
+    margin-bottom: 0; /* Remove bottom margin from the card */
+}
+
+.card-body {
+    padding: 10px; /* Adjust padding as needed, ensure it’s appropriate */
+}
+
+.col-md-4 {
+    padding: 0; /* Remove padding from the column */
+    margin-bottom: 0; /* Remove bottom margin to prevent extra space */
+}
+
+/* Optional: If there's any global margin on images, you can reset that */
+.card-img-top {
+    margin-bottom: 0; /* Remove margin below the image */
+}
+
+.text-page-home {
+    margin-bottom: 0; /* Ensure there's no margin at the bottom of the card */
+}
+@media (max-width: 480px) {
+    .card {
+        padding: 5px; /* Minimal padding on very small screens */
+    }
+   
+    .comment-section {
+        margin: 10% auto; /* Increase margin for better spacing */
+    }
+
+    .comment-form button {
+        font-size: 0.9rem; /* Smaller button font size */
+    }
+
+    .star-rating {
+        font-size: 1.2rem; /* Further reduce star size for mobile */
+    }
+}
