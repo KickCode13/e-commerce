@@ -10,6 +10,7 @@ dotenv.config();
 
 const app = express();
 
+
 // Middleware para analisar dados do corpo da requisição
 app.use(express.json()); // Para requisições com conteúdo JSON
 app.use(express.urlencoded({ extended: true })); // Para requisições com conteúdo URL-encoded (como formulários HTML)
