@@ -34,7 +34,7 @@ document.querySelectorAll(".btn-edit").forEach((btn) => {
           .then((res) => {
             if (res.ok) {
               alert("Produto Editado");
-              window.location.href= '/';
+              window.location.href= '/product/adm/acess';
             } else {
               alert("Erro ao editar o produto");
             }
