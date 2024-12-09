@@ -22,11 +22,12 @@ class ProductController {
         .then((product) => {
           if (product) {
             console.log(product._id.toHexString());
-            res.status(200).json({ message:"Adição de produto concluida"})
+            res.status(200).redirect('/product/adm/acess')
+            
           }
         })
         .catch((err) => {
-          console.log("Houve um erro");
+          console.log("Houve um erro", err);
         });
     } catch (err) {
       console.log(err);
@@ -167,6 +168,16 @@ class ProductController {
     console.log(lineItems);
     res.render('checkout/success', {lineItems: lineItems.data});
 
+  }
+  static async admAcessPage(req, res){
+    try {
+      await Product_Model.find().
+      then((products)=>{
+          res.render('adm/index', {products});
+      });
+  } catch (err) {
+      console.log(err);
+  }
   }
 }
 
