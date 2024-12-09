@@ -45,5 +45,7 @@ routerProduct.get('/complete', (req, res)=>{
 
    ProductController.success_Url(req, res);
 });
-
+routerProduct.get('/adm/acess', (req, res) =>{
+    ProductController.admAcessPage(req,res)
+})
 export default routerProduct;
