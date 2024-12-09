@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const productSchema = mongoose.model(
+const productModel = mongoose.model(
   "Product",
   new Schema({
     name: {
@@ -70,4 +70,4 @@ const productSchema = mongoose.model(
   })
 );
 
-export default productSchema;
+export default productModel;
