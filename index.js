@@ -24,15 +24,16 @@ app.set('views', __dirname + '/views');
 console.log(__dirname);
 app.set("view engine", "ejs");
 import ProductController from "./controllers/productController.js";
-
+//routes
 import routerProduct from './routes/product/product_Routes.js';
 import routerContactInfo from "./routes/contact-info/contact_Routes.js";
 import routerCart from "./routes/cart/cart_Routes.js";
 
+import routerUser from "./routes/user/user_Routes.js";
 app.use('/product', routerProduct);
 app.use('/contact', routerContactInfo);
 app.use('/cart', routerCart);
-
+app.use('/user', routerUser);
 app.get('/', (req, res)=>{
     ProductController.getAllProducts(req, res);
 });
