@@ -1,6 +1,6 @@
 import express from "express";
 import ProductController from "../../controllers/productController.js";
-
+import authenticateToken from "../../middlewares/authenticationJWT.js";
 
 const routerProduct = express.Router();
 
@@ -45,7 +45,7 @@ routerProduct.get('/complete', (req, res)=>{
 
    ProductController.success_Url(req, res);
 });
-routerProduct.get('/adm/acess', (req, res) =>{
+routerProduct.get('/adm/acess',authenticateToken, (req, res) =>{
     ProductController.admAcessPage(req,res)
 })
 export default routerProduct;
