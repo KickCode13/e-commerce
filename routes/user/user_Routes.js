@@ -9,5 +9,13 @@ routerUser.get('/register', (req, res)=>{
 
 routerUser.post('/register', (req, res)=>{
     User.postRegisterUser(req, res);
+});
+
+routerUser.get('/login', (req, res)=>{
+    User.getLoginUser(req, res);
+});
+
+routerUser.post('/login', (req, res)=>{
+    User.postLoginUser(req, res);
 })
 export default routerUser;
