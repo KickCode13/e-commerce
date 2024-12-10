@@ -6,7 +6,7 @@ import connectDB from "./db/dbConnection.js";
 connectDB();
 import Product_Model from "./models/Product_Model.js";
 dotenv.config();
-
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -14,7 +14,7 @@ const app = express();
 // Middleware para analisar dados do corpo da requisição
 app.use(express.json()); // Para requisições com conteúdo JSON
 app.use(express.urlencoded({ extended: true })); // Para requisições com conteúdo URL-encoded (como formulários HTML)
-
+app.use(cookieParser())
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.set('views', __dirname + '/views');
