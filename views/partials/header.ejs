@@ -31,9 +31,25 @@
                 <li class="nav-item">
                     <a class="nav-link text-navbar" href="/cart/cart-items">Carrinho</a>
                 </li>
+              
                 <li class="nav-item">
                     <a class="nav-link text-navbar" href="/user/register">Register</a>
                 </li>
+                <% if (user) { %>
+                    <li class="nav-item">
+                        <a class="nav-link text-navbar" href="/user/login">Logado</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-navbar" href="/user/logout">Logout</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link text-navbar" href="/user/login">Login</a>
+                    </li>
+                <% } %>
+
+               
+                
             </ul>
         </div>
     </nav>

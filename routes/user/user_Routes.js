@@ -17,5 +17,9 @@ routerUser.get('/login', (req, res)=>{
 
 routerUser.post('/login', (req, res)=>{
     User.postLoginUser(req, res);
-})
+});
+routerUser.get('/logout', (req, res) => {
+    res.clearCookie('usertToken'); // Substitua 'token' pelo nome do seu cookie
+    res.redirect('/'); // Redireciona para a página inicial ou outra página desejada
+});
 export default routerUser;

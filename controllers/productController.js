@@ -1,7 +1,7 @@
 import Product_Model from "../models/Product_Model.js";
 
 import Stripe from "stripe";
-
+import userGetStatusLogin from "../utils/userGetStatusLogin.js";
 const stripe = new Stripe(process.env.STRIPE_SECRETE_KEY);
 
 class ProductController {
@@ -38,7 +38,7 @@ class ProductController {
     try {
         await Product_Model.find().
         then((products)=>{
-            res.render('home/index', {products});
+            res.render('home/index', {products, user:userGetStatusLogin});
         });
     } catch (err) {
         
@@ -66,8 +66,11 @@ class ProductController {
   static async getProduct(req,res){
     const id = req.params.id;
     try {
-      const product = await Product_Model.findById(id);
-      res.render('product/product-details', {product});
+      const productVar = await Product_Model.findById(id).then((product)=>{
+        res.render('product/product-details', {product, user:userGetStatusLogin})
+      });
+      
+     
     } catch (err) {
       
     }

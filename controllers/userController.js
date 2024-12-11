@@ -2,6 +2,7 @@ import UserModel from "../models/User_Model.js";
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import userGetStatusLogin from "../utils/userGetStatusLogin.js";
 dotenv.config();
 class User {
   static async getRegisterUser(req, res) {
@@ -36,12 +37,12 @@ class User {
       console.log(email);
       console.log(user.email);
       if(bcryptjs.compareSync(password, user.password)){
-        const token = jwt.sign(
+        const userToken = jwt.sign(
           { id: user._id, email: user.email }, // Payload
           process.env.JWT_SECRET, // Chave secreta
           { expiresIn: '1h' } // Tempo de expiração
       );
-        res.cookie('token', token, {
+        res.cookie('userToken', userToken, {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'production', // Usar somente em HTTPS
           maxAge: 3600000, // Tempo de expiração em milissegundos (1 hora)

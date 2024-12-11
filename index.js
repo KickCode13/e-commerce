@@ -7,7 +7,7 @@ connectDB();
 import Product_Model from "./models/Product_Model.js";
 dotenv.config();
 import cookieParser from "cookie-parser";
-
+import userGetStatusLogin from "./utils/userGetStatusLogin.js";
 const app = express();
 
 
@@ -34,9 +34,14 @@ app.use('/product', routerProduct);
 app.use('/contact', routerContactInfo);
 app.use('/cart', routerCart);
 app.use('/user', routerUser);
+
+
 app.get('/', (req, res)=>{
     ProductController.getAllProducts(req, res);
+    
 });
+
+
 
 app.listen(process.env.PORT,()=>{
     console.log("Servidor ON")

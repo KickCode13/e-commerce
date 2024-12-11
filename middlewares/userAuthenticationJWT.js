@@ -1,16 +1,16 @@
 import jwt from "jsonwebtoken";
-
+import userGetStatusLogin from "../utils/userGetStatusLogin.js";
 const authenticateToken = (req, res, next) => {
   // Extrair o token do cookie
-  const token = req.cookies.token;
+  const userToken = req.cookies.token;
 
-  if (!token) {
-    return res.status(403).send("Acesso negado: token não fornecido.");
+  if (!userToken) {
+    return res.render("user/loginPage", { user: userGetStatusLogin(req, res) });
   }
 
   try {
     // Verifica e decodifica o token usando a chave secreta
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(userToken, process.env.JWT_SECRET);
     req.user = decoded; // Adiciona os dados do usuário decodificado ao objeto `req`
     next(); // Chama o próximo middleware ou rota
   } catch (err) {
