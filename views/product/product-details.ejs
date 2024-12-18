@@ -1,112 +1,145 @@
 <%- include('../partials/header.ejs') %>
-    <div class="container mt-5 text-page-details">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="<%= product.image_url %>" alt="Product Image" class="img-fluid rounded">
-            </div>
-            <div class="col-md-6">
-                <h1 class="display-5 mb-3"><%= product.name %></h1>
-                <p class="text-category-page-details">Category: <strong><%= product.category %></strong></p>
-                <h2 class="text-success mb-4"><%= product.price %></h2>
-                <p>
-                    <%= product.description %>
-                </p>
-                <form method="post" action="/product/checkout">
-                    <div class="mb-3">
-                        <input type="hidden" id="name" name="name" value="<%= product.name %>">
-                        <label for="quantity" class="form-label">Estoque: <%= product.quantity %></label>
-                        <input type="number" id="quantity" name="quantity" class="form-control w-25" min="1" value="1">
-                        
-
-                        <!-- Campo oculto para Price -->
-                        <input type="hidden" id="price" name="price" value="<%= product.price %>">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-lg" >Buy</button>
-                    <button type="submit" class="btn btn-primary btn-lg">Add to Cart</button>
-                   
-                </form>
-            </div>
-        </div>
-
-        <div class="mt-5 ">
-            <h3>Product Details</h3>
-            <table class="table table-bordered table-rounded ">
-                <tbody class="text-page-details">
-                    <tr>
-                        <th scope="row">Tamanho</th>
-                        <td><%= product.sizeOption %></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Cor</th>
-                        <td><%= product.colorOption %></td>
-                    </tr>
-                    <tr>
-                        <th scope="row"> Caracteristicas</th>
-                        <td><%= product.productFeatures %></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="container mt-5 text-page-details">
+  <div class="row">
+    <div class="col-md-6">
+      <img
+        src="<%= product.image_url %>"
+        alt="Product Image"
+        class="img-fluid rounded"
+      />
     </div>
-    <div class="comment-section">
-        <h3>Deixe seu Comentário e Avaliação</h3>
-    
-        <!-- Formulário de Comentário -->
-        <form class="comment-form">
-           
-    
-            <!-- Comentário -->
-            <div class="mb-3">
-                <label for="comment" class="form-label">Comentário</label>
-                <textarea class="form-control" id="comment" rows="4" placeholder="Deixe seu comentário" required></textarea>
-            </div>
-    
-            <!-- Avaliação por Estrelas -->
-            <div class="mb-3">
-                <label class="form-label">Avaliação</label>
-                <div class="star-rating">
-                    <i class="bi bi-star" data-value="1"></i>
-                    <i class="bi bi-star" data-value="2"></i>
-                    <i class="bi bi-star" data-value="3"></i>
-                    <i class="bi bi-star" data-value="4"></i>
-                    <i class="bi bi-star" data-value="5"></i>
-                </div>
-            </div>
-    
-            <button type="submit" class="btn btn-primary">Enviar Comentário</button>
-        </form>
-    
-        <!-- Comentários Postados -->
-        <div class="posted-comments">
-            <h4>Comentários</h4>
-    
-            <!-- Comentário Exemplo 1 -->
-            <div class="comment">
-                <div class="author">Maria Silva</div>
-                <div class="star-rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i> (4/5)
-                </div>
-                <p>Adorei o produto! A tela é ótima e o desempenho é excelente. Vale a pena pelo preço!</p>
-            </div>
-    
-            <!-- Comentário Exemplo 2 -->
-            <div class="comment">
-                <div class="author">João Pereira</div>
-                <div class="star-rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i> (3/5)
-                </div>
-                <p>O produto é bom, mas a bateria poderia durar mais. No geral, é satisfatório.</p>
-            </div>
+    <div class="col-md-6">
+      <h1 class="display-5 mb-3"><%= product.name %></h1>
+      <p class="text-category-page-details">
+        Category: <strong><%= product.category %></strong>
+      </p>
+      <h2 class="text-success mb-4"><%= product.price %></h2>
+      <p><%= product.description %></p>
+      <form method="post" action="/product/checkout">
+        <div class="mb-3">
+          <input
+            type="hidden"
+            id="name"
+            name="name"
+            value="<%= product.name %>"
+          />
+          <label for="quantity" class="form-label"
+            >Estoque: <%= product.quantity %></label
+          >
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            class="form-control w-25"
+            min="1"
+            value="1"
+          />
+
+          <!-- Campo oculto para Price -->
+          <input
+            type="hidden"
+            id="price"
+            name="price"
+            value="<%= product.price %>"
+          />
         </div>
+        <button type="submit" class="btn btn-primary btn-lg">Buy</button>
+        <button type="submit" class="btn btn-primary btn-lg">
+          Add to Cart
+        </button>
+      </form>
     </div>
-    
-   
+  </div>
+
+  <div class="mt-5">
+    <h3>Product Details</h3>
+    <table class="table table-bordered table-rounded">
+      <tbody class="text-page-details">
+        <tr>
+          <th scope="row">Tamanho</th>
+          <td><%= product.sizeOption %></td>
+        </tr>
+        <tr>
+          <th scope="row">Cor</th>
+          <td><%= product.colorOption %></td>
+        </tr>
+        <tr>
+          <th scope="row">Caracteristicas</th>
+          <td><%= product.productFeatures %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="comment-section">
+  <h3>Deixe seu Comentário e Avaliação</h3>
+
+  <!-- Formulário de Comentário -->
+  <form class="comment-form" action="/comment/review-comment" method="post">
+    <!-- Comentário -->
+    <div class="mb-3">
+      <label for="comment" class="form-label">Comentário</label>
+      <textarea
+        class="form-control"
+        id="comment"
+        name="comment"
+        rows="4"
+        placeholder="Deixe seu comentário"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Avaliação por Estrelas -->
+    <div class="mb-3">
+      <label class="form-label">Avaliação</label>
+      <div class="star-rating">
+        <i class="bi bi-star" data-value="1"></i>
+        <i class="bi bi-star" data-value="2"></i>
+        <i class="bi bi-star" data-value="3"></i>
+        <i class="bi bi-star" data-value="4"></i>
+        <i class="bi bi-star" data-value="5"></i>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar Comentário</button>
+  </form>
+
+  <!-- Comentários Postados -->
+  <div class="posted-comments">
+    <h4>Comentários</h4>
+
+    <!-- Comentário Exemplo 1 -->
+    <div class="comment">
+      <div class="author">Maria Silva</div>
+      <div class="star-rating">
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star"></i> (4/5)
+      </div>
+      <p>
+        Adorei o produto! A tela é ótima e o desempenho é excelente. Vale a pena
+        pelo preço!
+      </p>
+    </div>
+
+    <!-- Comentário Exemplo 2 -->
+    <div class="comment">
+      <div class="author">João Pereira</div>
+      <div class="star-rating">
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star"></i>
+        <i class="bi bi-star"></i> (3/5)
+      </div>
+      <p>
+        O produto é bom, mas a bateria poderia durar mais. No geral, é
+        satisfatório.
+      </p>
+    </div>
+  </div>
+</div>
+
 <%- include('../partials/footer.ejs') %>

@@ -30,13 +30,15 @@ import routerContactInfo from "./routes/contact-info/contact_Routes.js";
 import routerCart from "./routes/cart/cart_Routes.js";
 
 import routerUser from "./routes/user/user_Routes.js";
+import commentRouter from "./routes/comment/comment_Routes.js";
+import userAuthentication from './middlewares/userAuthenticationJWT.js'
 app.use('/product', routerProduct);
 app.use('/contact', routerContactInfo);
 app.use('/cart', routerCart);
 app.use('/user', routerUser);
+app.use('/comment', commentRouter);
 
-
-app.get('/', (req, res)=>{
+app.get('/',userAuthentication, (req, res)=>{
     ProductController.getAllProducts(req, res);
     
 });

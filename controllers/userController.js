@@ -3,10 +3,13 @@ import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import userGetStatusLogin from "../utils/userGetStatusLogin.js";
+
 dotenv.config();
 class User {
   static async getRegisterUser(req, res) {
-    res.render("user/registerPage");
+    const statusUser= userGetStatusLogin(req,res);//vai ser undefined pois ainda não tem o valor do req.user pois o token ainda não foi gerado
+    
+    res.render("user/registerPage",{user: statusUser});
   }
 
   static async postRegisterUser(req, res) {
@@ -22,12 +25,12 @@ class User {
         password:hashPassword
       });
       await newUser.save();
-      res.render('user/successRegisterPage')
+      res.render('user/successRegisterPage', {user:userGetStatusLogin})
     } catch (err) {}
   }
 
   static async getLoginUser(req, res){
-    res.render('user/loginPage');
+    res.render('user/loginPage', {user:userGetStatusLogin});
   }
 
   static async postLoginUser(req, res){
@@ -47,7 +50,7 @@ class User {
           secure: process.env.NODE_ENV === 'production', // Usar somente em HTTPS
           maxAge: 3600000, // Tempo de expiração em milissegundos (1 hora)
       });
-        res.render('user/successLoginPage');
+        res.render('user/successLoginPage', {user:userGetStatusLogin});
       }
       else{
         console.log('deu bo')

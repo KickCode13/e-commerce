@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import userGetStatusLogin from "../utils/userGetStatusLogin.js";
 const authenticateToken = (req, res, next) => {
   // Extrair o token do cookie
-  const userToken = req.cookies.token;
+  const userToken = req.cookies.userToken;
 
   if (!userToken) {
     return res.render("user/loginPage", { user: userGetStatusLogin(req, res) });

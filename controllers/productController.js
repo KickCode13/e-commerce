@@ -80,7 +80,7 @@ class ProductController {
     const id = req.params.id;
     try {
       const product = await Product_Model.findById(id);
-      res.render('product/product-edit', {product});
+      res.render('product/product-edit', {product, user:userGetStatusLogin});
     } catch (err) {
       
     }
@@ -169,14 +169,14 @@ class ProductController {
     const session = await stripe.checkout.sessions.retrieve(id, {expand:['payment_intent.payment_method']});
     const lineItems = await stripe.checkout.sessions.listLineItems(id);
     console.log(lineItems);
-    res.render('checkout/success', {lineItems: lineItems.data});
+    res.render('checkout/success', {lineItems: lineItems.data,user:userGetStatusLogin});
 
   }
   static async admAcessPage(req, res){
     try {
       await Product_Model.find().
       then((products)=>{
-          res.render('adm/index', {products});
+          res.render('adm/index', {products, user:userGetStatusLogin});
       });
   } catch (err) {
       console.log(err);

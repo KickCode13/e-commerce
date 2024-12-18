@@ -45,4 +45,6 @@ routerProduct.get("/adm/acess", (req, res) => {
   ProductController.admAcessPage(req, res);
 });
 
+
+
 export default routerProduct;
