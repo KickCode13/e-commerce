@@ -75,7 +75,7 @@
   <h3>Deixe seu Comentário e Avaliação</h3>
 
   <!-- Formulário de Comentário -->
-  <form class="comment-form" action="/comment/review-comment" method="post">
+  <form class="comment-form" >
     <!-- Comentário -->
     <div class="mb-3">
       <label for="comment" class="form-label">Comentário</label>
@@ -101,16 +101,18 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Enviar Comentário</button>
+    <button type="submit" class="btn btn-primary btn-comment" data-productID="<%= product._id %>">
+      Enviar Comentário
+    </button>
   </form>
 
   <!-- Comentários Postados -->
   <div class="posted-comments">
     <h4>Comentários</h4>
-
-    <!-- Comentário Exemplo 1 -->
+    <% commentAll.forEach(comment => { %>
+         <!-- Comentário Exemplo 1 -->
     <div class="comment">
-      <div class="author">Maria Silva</div>
+      <div class="author"><%= comment.id %></div>
       <div class="star-rating">
         <i class="bi bi-star-fill"></i>
         <i class="bi bi-star-fill"></i>
@@ -119,27 +121,34 @@
         <i class="bi bi-star"></i> (4/5)
       </div>
       <p>
-        Adorei o produto! A tela é ótima e o desempenho é excelente. Vale a pena
-        pelo preço!
+        <%= comment.contentText %>
       </p>
     </div>
+    <% }) %>
+    
 
-    <!-- Comentário Exemplo 2 -->
-    <div class="comment">
-      <div class="author">João Pereira</div>
-      <div class="star-rating">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star"></i>
-        <i class="bi bi-star"></i> (3/5)
-      </div>
-      <p>
-        O produto é bom, mas a bateria poderia durar mais. No geral, é
-        satisfatório.
-      </p>
-    </div>
+   
   </div>
 </div>
-
+<script>
+  document
+    .querySelector(".btn-comment")
+    .addEventListener("click", async function (e) {
+      e.preventDefault();
+      const comment = document.getElementById("comment").value;
+      const productID = this.getAttribute('data-productID');
+      console.log("Produto ID:", productID)
+      fetch(`/comment/review-comment/${productID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ comment: comment, productID: productID }),
+      }).then(async (res) => {
+        if (res.ok) {
+          console.log("Resposta em json", await res.json());
+        }
+      });
+    });
+</script>
 <%- include('../partials/footer.ejs') %>

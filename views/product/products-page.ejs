@@ -3,80 +3,33 @@
 <div class="container mt-5">
     <h2 class="text-center mb-4">Explore Nossos Produtos</h2>
     
-    <div class="row g-4">
-        <!-- Produto 1 -->
-        <div class="col-12 col-md-4">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto 1">
-                <div class="card-body">
-                    <h5 class="card-title">Produto 1</h5>
-                    <p class="card-text">Descrição breve do produto 1.</p>
-                    <p class="card-text"><strong>R$100,00</strong></p>
-                    <a href="#" class="btn btn-primary">Adicionar ao Carrinho</a>
+    <div class="container mt-4">
+        <h2 class="text-center mb-4 h2-text">Nossos Produtos</h2>
+        <div class="row">
+            <% products.forEach(product => { %>
+            <!-- Produto 1 -->
+            
+            <div class="col-md-4">
+                <div class="card text-page-home">
+                        <div class="card-body">
+                            <a href="product/product-details/<%= product._id %>">  
+                                <img src="<%= product.image_url %>" class="card-img-top" alt="Produto 1">
+                                <h5 class="card-title"><%= product.name %></h5>
+                                <p class="card-text"><%= product.description %></p>
+                                <p class="card-text"><strong><%= product.price %></strong></p>             
+                                <a href="/cart/cart-items" class="btn btn-primary">Adicionar ao Carrinho</a>
+                            </a>
+                        </div>
+                    
                 </div>
             </div>
-        </div>
-        <!-- Produto 2 -->
-        <div class="col-12 col-md-4">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto 2">
-                <div class="card-body">
-                    <h5 class="card-title">Produto 2</h5>
-                    <p class="card-text">Descrição breve do produto 2.</p>
-                    <p class="card-text"><strong>R$150,00</strong></p>
-                    <a href="#" class="btn btn-primary">Adicionar ao Carrinho</a>
-                </div>
-            </div>
-        </div>
-        <!-- Produto 3 -->
-        <div class="col-12 col-md-4">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto 3">
-                <div class="card-body">
-                    <h5 class="card-title">Produto 3</h5>
-                    <p class="card-text">Descrição breve do produto 3.</p>
-                    <p class="card-text"><strong>R$200,00</strong></p>
-                    <a href="#" class="btn btn-primary">Adicionar ao Carrinho</a>
-                </div>
-            </div>
-        </div>
-        <!-- Produto 4 -->
-        <div class="col-12 col-md-4">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto 4">
-                <div class="card-body">
-                    <h5 class="card-title">Produto 4</h5>
-                    <p class="card-text">Descrição breve do produto 4.</p>
-                    <p class="card-text"><strong>R$250,00</strong></p>
-                    <a href="#" class="btn btn-primary">Adicionar ao Carrinho</a>
-                </div>
-            </div>
-        </div>
-        <!-- Produto 5 -->
-        <div class="col-12 col-md-4">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto 5">
-                <div class="card-body">
-                    <h5 class="card-title">Produto 5</h5>
-                    <p class="card-text">Descrição breve do produto 5.</p>
-                    <p class="card-text"><strong>R$300,00</strong></p>
-                    <a href="#" class="btn btn-primary">Adicionar ao Carrinho</a>
-                </div>
-            </div>
-        </div>
-        <!-- Produto 6 -->
-        <div class="col-12 col-md-4">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto 6">
-                <div class="card-body">
-                    <h5 class="card-title">Produto 6</h5>
-                    <p class="card-text">Descrição breve do produto 6.</p>
-                    <p class="card-text"><strong>R$350,00</strong></p>
-                    <a href="#" class="btn btn-primary">Adicionar ao Carrinho</a>
-                </div>
-            </div>
+           
+            <% }) %>
+           
+            
         </div>
     </div>
+    
 
     <!-- Paginação -->
     <div class="d-flex justify-content-center mt-4">

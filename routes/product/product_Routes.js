@@ -4,8 +4,8 @@ import userAuthenticationJWT from "../../middlewares/userAuthenticationJWT.js";
 
 const routerProduct = express.Router();
 
-routerProduct.get("/products-page", (req, res) => {
-  res.render("product/products-page");
+routerProduct.get("/products-page", userAuthenticationJWT,(req, res) => {
+  ProductController.getPageProducts(req, res);
 });
 
 routerProduct.get("/product-details/:id", userAuthenticationJWT, (req, res) => {
