@@ -27,7 +27,7 @@
                             <h5 class="card-title"><%= product.name %></h5>
                             <p class="card-text"><%= product.description %></p>
                             <p class="card-text"><strong><%= product.price %></strong></p>             
-                            <a href="/cart/cart-items" class="btn btn-primary">Adicionar ao Carrinho</a>
+                            <a href="/cart/cart-items/<%= product._id %>"  data-product-id="<%= product._id %>" class="btn btn-primary link-cart">Adicionar ao Carrinho</a>
                         </a>
                     </div>
                 
@@ -40,6 +40,6 @@
     </div>
 </div>
 
-
+<script src="/js/fetchAddToCart.js"></script>
 
 <%- include('../partials/footer.ejs') %>

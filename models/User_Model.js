@@ -20,7 +20,8 @@ const userModel = mongoose.model("User",
         password:{
             type:String,
             required:true
-        }
+        },
+       
     })
 )
 

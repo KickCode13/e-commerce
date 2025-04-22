@@ -24,7 +24,7 @@
             value="<%= product.name %>"
           />
           <label for="quantity" class="form-label"
-            >Estoque: <%= product.quantity %></label
+            >Estoque: <%= product.stockQuantity %></label
           >
           <input
             type="number"
@@ -32,7 +32,6 @@
             name="quantity"
             class="form-control w-25"
             min="1"
-            value="1"
           />
 
           <!-- Campo oculto para Price -->
@@ -44,10 +43,10 @@
           />
         </div>
         <button type="submit" class="btn btn-primary btn-lg">Buy</button>
-        <button type="submit" class="btn btn-primary btn-lg">
-          Add to Cart
-        </button>
+        
       </form>
+      <a href="/cart/cart-items/<%= product._id %>"  data-product-id="<%= product._id %>" class="btn btn-primary link-cart">Adicionar ao Carrinho</a>
+                        
     </div>
   </div>
 
@@ -112,14 +111,7 @@
     <% commentAll.forEach(comment => { %>
          <!-- Comentário Exemplo 1 -->
     <div class="comment">
-      <div class="author"><%= comment.id %></div>
-      <div class="star-rating">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star"></i> (4/5)
-      </div>
+      <div class="author"><%= comment.User.name %></div>
       <p>
         <%= comment.contentText %>
       </p>
@@ -130,6 +122,7 @@
    
   </div>
 </div>
+<script src="/js/fetchAddToCart.js"></script>
 <script>
   document
     .querySelector(".btn-comment")
@@ -146,6 +139,7 @@
         body: JSON.stringify({ comment: comment, productID: productID }),
       }).then(async (res) => {
         if (res.ok) {
+          window.location.reload();
           console.log("Resposta em json", await res.json());
         }
       });

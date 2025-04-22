@@ -4,7 +4,7 @@ import userGetStatusLogin from "../utils/userGetStatusLogin.js";
 class Comment_Controller {
   static async toComment(req, res) {
     const comment = req.body.comment;
-    const productID = req.body.productID;
+    const productID = req.body.productID;//enviei no fetch diretamente pois a url de cima (principal)não muda em uma requisição
     console.log("ProductID",productID);
     console.log("Comentario:", comment, "\nDados do usuario", req.user, "\n");
     const newComment = new commentModel({

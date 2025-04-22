@@ -26,10 +26,9 @@ const productModel = mongoose.model(
       type: String,
       required: true,
     },
-    quantity: {
+    stockQuantity:{
       type: Number,
-      required: true, // Quantidade obrigatória
-      min: 0, // Não permite quantidade negativa
+      default: 0
     },
     description: {
       type: String,

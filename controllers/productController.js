@@ -14,7 +14,7 @@ class ProductController {
       const newProduct = new Product_Model({
         name,
         price,
-        quantity,
+        stockQuantity:quantity,
         description,
         image_url,
       });
@@ -160,13 +160,18 @@ class ProductController {
     });
     res.redirect(session.url);
   }
+
+  static async addToCart(req, res){
+    const userID = req.user.id;
+    const productID = req.params.id;
+  }
   static async success_Url(req, res) {
     const id = req.query.session_id;
     const session = await stripe.checkout.sessions.retrieve(id, {
       expand: ["payment_intent.payment_method"],
     });
     const lineItems = await stripe.checkout.sessions.listLineItems(id);
-    console.log(lineItems);
+    console.log("Dados da compra:",lineItems);
     res.render("checkout/success", {
       lineItems: lineItems.data,
       user: userGetStatusLogin,

@@ -2,44 +2,32 @@
 
 <!-- Carrinho -->
 <div class="container mt-5">
-    <h2 class="mb-4">Carrinho de Compras</h2>
+    <h2 class="mb-4">Carrinho de Compraskkkkk</h2>
     <div class="row">
         <!-- Lista de produtos -->
         <div class="col-lg-8">
             <div class="list-group">
                 <!-- Produto 1 -->
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img src="https://via.placeholder.com/100x100" alt="Produto 1" class="img-thumbnail me-3">
-                        <div>
-                            <h5 class="mb-1">Produto 1</h5>
-                            <p class="mb-1">Descrição breve do produto.</p>
-                            <p class="mb-0"><strong>R$100,00</strong></p>
+                 <% myItemsCart.forEach(item => { %>
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img src=" <%= item.Product.image_url %> " style="height: 80px; width: auto;" alt="Produto 1" class="img-thumbnail me-3">
+                            <div>
+                                <h5 class="mb-1"><%= item.Product.name %></h5>
+                                <p class="mb-1"><%= item.Product.description %></p>
+                                <p class="mb-0"><strong><%= item.Product.price %></strong></p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <label for="quantidade1" class="form-label mb-1"><%= item.quantity %></label>
+                            
+                            <a  href='/cart/cart-delete/<%= item._id %>' class="btn btn-danger btn-sm mt-2 btn-del">Remover</a>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <label for="quantidade1" class="form-label mb-1">Quantidade</label>
-                        <input type="number" id="quantidade1" class="form-control" value="1" min="1" style="width: 80px;">
-                        <button class="btn btn-danger btn-sm mt-2">Remover</button>
-                    </div>
-                </div>
+                 <% }) %>
+              
 
-                <!-- Produto 2 -->
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img src="https://via.placeholder.com/100x100" alt="Produto 2" class="img-thumbnail me-3">
-                        <div>
-                            <h5 class="mb-1">Produto 2</h5>
-                            <p class="mb-1">Descrição breve do produto.</p>
-                            <p class="mb-0"><strong>R$150,00</strong></p>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <label for="quantidade2" class="form-label mb-1">Quantidade</label>
-                        <input type="number" id="quantidade2" class="form-control" value="1" min="1" style="width: 80px;">
-                        <button class="btn btn-danger btn-sm mt-2">Remover</button>
-                    </div>
-                </div>
+               
             </div>
         </div>
 
@@ -59,5 +47,30 @@
         </div>
     </div>
 </div>
+<script>
+    document.querySelectorAll(".btn-del").forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    const url = this.getAttribute("href");
+    console.log(url);
+    const confirmDelete = confirm("Deseja mesmo deletar o Produto?");
+    if (confirmDelete) {
+      fetch(url, { method: "DELETE" })
+        .then((res) => {
+          if (res.ok) {
+            this.closest(".list-group-item").remove();
+            alert("Produto deletado");
+          } else {
+            alert("Erro ao deletar o produto");
+          }
+        })
+        .catch((err) => {
+          console.error("Erro ao deletar produto:", err);
+          alert("Erro inesperado. Tente novamente.");
+        });
+    }
+  });
+});
 
+</script>
 <%- include('../partials/footer.ejs') %>
