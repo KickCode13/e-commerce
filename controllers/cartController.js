@@ -1,6 +1,8 @@
 import cartModel from "../models/Cart_Model.js";
 import productModel from "../models/Product_Model.js";
 import userGetStatusLogin from '../utils/userGetStatusLogin.js';
+import { createCheckoutSession } from "../utils/stripeCheckout.js";
+
 class Cart_Conbtroller{
     static async addToCart(req, res) {    
         try {
@@ -63,6 +65,30 @@ class Cart_Conbtroller{
             return res.status(500).json({ message: "Erro interno no servidor" });
         }
       }
+      
+    static async finalizarCarrinho(req, res) {
+        try {
+            const userID = req.user.id;
+            const itemsCarrinho = await cartModel.find({ User: userID }).populate("Product");
+
+            if (!itemsCarrinho || itemsCarrinho.length === 0) {
+                return res.status(400).send("Carrinho está vazio");
+            }
+
+            const produtosParaCheckout = itemsCarrinho.map(item => ({
+                name: item.Product.name,
+                price: item.Product.price,
+                quantity: item.quantity,
+            }));
+
+            const session = await createCheckoutSession(produtosParaCheckout);
+            res.redirect(session.url);
+        } catch (err) {
+            console.error("Erro ao finalizar carrinho:", err);
+            res.status(500).send("Erro ao iniciar checkout do carrinho");
+        }
+        }
+  
 }
 
 export default Cart_Conbtroller;

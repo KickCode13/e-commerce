@@ -17,5 +17,9 @@ routerCart.get("/cart-items", userAuthenticationJWT, (req, res) => {
  
   Cart_Controller.seeMyCart(req, res);
 });
+routerCart.post("/cart-send", userAuthenticationJWT, (req, res) => {
+ 
+  Cart_Controller.finalizarCarrinho(req, res);
+});
 
 export default routerCart;

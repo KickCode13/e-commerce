@@ -12,7 +12,7 @@
             <div class="col-md-4">
                 <div class="card text-page-home">
                         <div class="card-body">
-                            <a href="product/product-details/<%= product._id %>">  
+                            <a href="/product/product-details/<%= product._id %>">  
                                 <img src="<%= product.image_url %>" class="card-img-top" alt="Produto 1">
                                 <h5 class="card-title"><%= product.name %></h5>
                                 <p class="card-text"><%= product.description %></p>
@@ -32,27 +32,15 @@
     
 
     <!-- Paginação -->
-    <div class="d-flex justify-content-center mt-4">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <span class="page-link">Anterior</span>
-                </li>
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">1</span>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Próxima</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+<div class="mt-4 text-center">
+    <ul class="pagination">
+    <% for(let i = 1; i <= totalPages; i++) { %>
+        <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+            <a class="page-link" href="/product/products-page?page=<%= i %>"><%= i %></a>
+        </li>
+    <% } %>
+    </ul>
+</div>
 </div>
 
 <%- include('../partials/footer.ejs') %>

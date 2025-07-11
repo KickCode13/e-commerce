@@ -8,23 +8,29 @@
         <div class="col-lg-8">
             <div class="list-group">
                 <!-- Produto 1 -->
-                 <% myItemsCart.forEach(item => { %>
-                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                <% myItemsCart.forEach(item => { %>
+                    <% if (item.Product) { %>
+                      <div class="list-group-item d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <img src=" <%= item.Product.image_url %> " style="height: 80px; width: auto;" alt="Produto 1" class="img-thumbnail me-3">
-                            <div>
-                                <h5 class="mb-1"><%= item.Product.name %></h5>
-                                <p class="mb-1"><%= item.Product.description %></p>
-                                <p class="mb-0"><strong><%= item.Product.price %></strong></p>
-                            </div>
+                          <img src="<%= item.Product.image_url %>" style="height: 80px; width: auto;" alt="Produto" class="img-thumbnail me-3">
+                          <div>
+                            <h5 class="mb-1"><%= item.Product.name %></h5>
+                            <p class="mb-1"><%= item.Product.description %></p>
+                            <p class="mb-0"><strong>R$<%= item.Product.price %></strong></p>
+                          </div>
                         </div>
                         <div class="text-center">
-                            <label for="quantidade1" class="form-label mb-1"><%= item.quantity %></label>
-                            
-                            <a  href='/cart/cart-delete/<%= item._id %>' class="btn btn-danger btn-sm mt-2 btn-del">Remover</a>
+                          <label class="form-label mb-1"><%= item.quantity %></label>
+                          <a href='/cart/cart-delete/<%= item._id %>' class="btn btn-danger btn-sm mt-2 btn-del">Remover</a>
                         </div>
-                    </div>
-                 <% }) %>
+                      </div>
+                    <% } else { %>
+                      <div class="alert alert-warning">
+                        Produto não disponível (foi removido do sistema). <a href="/cart/cart-delete/<%= item._id %>" class="btn btn-sm btn-outline-danger">Excluir do carrinho</a>
+                      </div>
+                    <% } %>
+                <% }) %>
+
               
 
                
@@ -38,10 +44,13 @@
                     Resumo do Pedido
                 </div>
                 <div class="card-body">
+                    <form action="/cart/cart-send" method="post">
+                        <button class="btn btn-primary btn-lg w-100" type="submit">Finalizar Compra</button>
+                    </form>
                     <p class="mb-2">Subtotal: <strong>R$250,00</strong></p>
                     <p class="mb-2">Frete: <strong>R$20,00</strong></p>
                     <p class="mb-2">Total: <strong>R$270,00</strong></p>
-                    <button class="btn btn-primary btn-lg w-100">Finalizar Compra</button>
+                    
                 </div>
             </div>
         </div>

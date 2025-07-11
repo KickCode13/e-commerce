@@ -3,8 +3,10 @@ import Product_Model from "../models/Product_Model.js";
 import Stripe from "stripe";
 import userGetStatusLogin from "../utils/userGetStatusLogin.js";
 import commentModel from "../models/Comment_Model.js";
+
 const stripe = new Stripe(process.env.STRIPE_SECRETE_KEY);
 import mongoose from "mongoose";
+import cartModel from "../models/Cart_Model.js";
 class ProductController {
   static async addProduct(req, res) {
     try {
@@ -23,7 +25,7 @@ class ProductController {
         .then((product) => {
           if (product) {
             console.log(product._id.toHexString());
-            res.status(200).redirect("/product/adm/acess");
+            res.redirect("/product/adm/acess").status(200);
           }
         })
         .catch((err) => {
@@ -43,20 +45,24 @@ class ProductController {
     } catch (err) {}
   }
 
-  static async removeProduct(req, res) {
-    const id = req.params.id;
-    console.log(id);
-    try {
-      await Product_Model.findByIdAndDelete(id).then((deletedProduct) => {
-        if (!deletedProduct) {
-          res.status(404).json({ message: "Produto não encontrado" });
-        } else {
-          res.status(200).json({ message: "Produto excluido com sucesso" });
-        }
-      });
-    } catch (err) {
-      console.log(err);
+ static async removeProduct(req, res) {
+  const id = req.params.id;
+  console.log(id);
+  try {
+    const deletedProduct = await Product_Model.findByIdAndDelete(id);
+
+    if (!deletedProduct) {
+      return res.status(404).json({ message: "Produto não encontrado" });
     }
+
+    // Remoção em cascata
+    await cartModel.deleteMany({ Product: id });
+
+    return res.status(200).json({ message: "Produto e itens no carrinho removidos com sucesso" });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: "Erro interno ao deletar produto" });
+  }
   }
 
   static async getProduct(req, res) {
@@ -188,13 +194,27 @@ class ProductController {
   }
   static async getPageProducts(req, res) {
     try {
-      await Product_Model.find().then((products) => {
-        res.render("product/products-page", {
+      const page = parseInt(req.query.page) || 1;
+      const limit = 6; // produtos por página
+      const skip = (page - 1) * limit;
+
+      const products = await Product_Model.find().skip(skip).limit(limit);
+      const totalProducts = await Product_Model.countDocuments();
+      const totalPages = Math.ceil(totalProducts / limit);
+
+      res.render('product/products-page', {
           products,
+          currentPage: page,
+          totalPages,
           user: userGetStatusLogin,
-        });
       });
-    } catch (err) {}
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Erro ao buscar produtos");
+    }
+    
+
+    
   }
 }
 

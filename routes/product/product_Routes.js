@@ -1,19 +1,22 @@
 import express from "express";
 import ProductController from "../../controllers/productController.js";
 import userAuthenticationJWT from "../../middlewares/userAuthenticationJWT.js";
-
+import userGetStatusLogin from "../../utils/userGetStatusLogin.js";
+userGetStatusLogin
 const routerProduct = express.Router();
 
 routerProduct.get("/products-page", userAuthenticationJWT,(req, res) => {
   ProductController.getPageProducts(req, res);
 });
-
+routerProduct.get("/products-page/:page", userAuthenticationJWT,(req, res) => {
+  ProductController.getPageProducts(req, res);
+});
 routerProduct.get("/product-details/:id", userAuthenticationJWT, (req, res) => {
   ProductController.getProduct(req, res);
 });
 
 routerProduct.get("/add-product", (req, res) => {
-  res.render("product/product-add");
+  res.render("product/product-add", { user: userGetStatusLogin});
 });
 routerProduct.post("/add-product", (req, res) => {
   ProductController.addProduct(req, res);
