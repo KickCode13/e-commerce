@@ -8,7 +8,7 @@ class Cart_Conbtroller{
         try {
             const productID = req.params.id;
             const userID = req.user.id;
-    
+            const quantity = req.body.quantity || 1;
             // Verifica se o item já existe no carrinho do usuário
             const existingItem = await cartModel.findOne({ User: userID, Product: productID });
             console.log("DADOS DO ITEM E QUAITIDADE",existingItem);
@@ -17,7 +17,7 @@ class Cart_Conbtroller{
                 const newProductCart = new cartModel({
                     User: userID,
                     Product: productID,
-                    quantity: Number(1) // Inicializa a quantidade
+                    quantity: Number(quantity) // Inicializa a quantidade
                 })
                 
                

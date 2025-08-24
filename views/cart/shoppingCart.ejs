@@ -2,7 +2,7 @@
 
 <!-- Carrinho -->
 <div class="container mt-5">
-    <h2 class="mb-4">Carrinho de Compraskkkkk</h2>
+    <h2 class="mb-4">Carrinho de Compras</h2>
     <div class="row">
         <!-- Lista de produtos -->
         <div class="col-lg-8">
@@ -16,7 +16,7 @@
                           <div>
                             <h5 class="mb-1"><%= item.Product.name %></h5>
                             <p class="mb-1"><%= item.Product.description %></p>
-                            <p class="mb-0"><strong>R$<%= item.Product.price %></strong></p>
+                            <p class="mb-0"><strong>R$<%= item.Product.price * item.quantity %></strong></p>
                           </div>
                         </div>
                         <div class="text-center">
@@ -47,9 +47,8 @@
                     <form action="/cart/cart-send" method="post">
                         <button class="btn btn-primary btn-lg w-100" type="submit">Finalizar Compra</button>
                     </form>
-                    <p class="mb-2">Subtotal: <strong>R$250,00</strong></p>
-                    <p class="mb-2">Frete: <strong>R$20,00</strong></p>
-                    <p class="mb-2">Total: <strong>R$270,00</strong></p>
+
+                    <p class="mb-2">Total: <strong>R$<%= myItemsCart.reduce((acc, item) => acc + item.Product.price * item.quantity, 0) %></strong></p>
                     
                 </div>
             </div>
